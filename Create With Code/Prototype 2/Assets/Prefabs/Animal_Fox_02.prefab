@@ -902,6 +902,8 @@ GameObject:
   - component: {fileID: 515736147444388631}
   - component: {fileID: 515736147454103713}
   - component: {fileID: 515736148010106847}
+  - component: {fileID: 3787991024806296503}
+  - component: {fileID: -44718042435944189}
   m_Layer: 0
   m_Name: Animal_Fox_02
   m_TagString: Untagged
@@ -966,7 +968,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16bbeef55d47f4aa59f4b909dd0419ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
+--- !u!114 &3787991024806296503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515736147444844565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9090e05a021441dbab784c390b0dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-44718042435944189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515736147444844565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08134067, y: 0.20858264, z: 0.31203613}
+  m_Center: {x: 0.00019744039, y: 0.103811674, z: 0.012574101}
 --- !u!1 &515736147444844981
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +1004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 515736147444479137}
   - component: {fileID: 515736147450072119}
+  - component: {fileID: 5020690308255215067}
   m_Layer: 0
   m_Name: SM_Fox_02
   m_TagString: Untagged
@@ -1048,3 +1076,16 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000059604645, y: -0.029301882, z: 0.073896945}
     m_Extent: {x: 0.040517867, y: 0.104077205, z: 0.1580456}
   m_DirtyAABB: 0
+--- !u!65 &5020690308255215067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515736147444844981}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08103573, y: 0.20815443, z: 0.31245428}
+  m_Center: {x: -0.00000008940697, y: -0.029301882, z: 0.07207847}
