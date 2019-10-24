@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalInput: 0
-  speed: 20
+  speed: 40
   xrange: 20
   projectilePrefab: {fileID: 7214381364149817750, guid: 488e481165c0440cc8faae4576bff322,
     type: 3}
