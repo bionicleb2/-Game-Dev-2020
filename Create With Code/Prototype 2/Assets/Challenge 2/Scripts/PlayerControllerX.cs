@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     public GameObject dogPrefab;
+    public float time = (0.5f);
 
     // Update is called once per frame
     void Update()
@@ -13,6 +14,11 @@ public class PlayerControllerX : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
+            StartCoroutine(wait());  
         }
+        IEnumerator wait()
+            {
+                yield return new WaitForSeconds(time);
+            }
     }
 }
