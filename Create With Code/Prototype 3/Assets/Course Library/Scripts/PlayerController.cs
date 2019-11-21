@@ -7,8 +7,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody playerRb;
     private Animator playerAnim;
+    private AudioSource playerAudio;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
+    public AudioClip jumpSound;
+    public AudioClip crashSound;
+
     public float jumpForce;
     public float gravityModifier;
     public bool isOnGround = true;
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
         Physics.gravity *= gravityModifier;
     }
 
@@ -30,6 +35,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
+            playerAudio.PlayOneShot(jumpSound, 1f);
         }
         
     }
@@ -43,6 +49,7 @@ public class PlayerController : MonoBehaviour
             dirtParticle.Play();
         } else if(collision.gameObject.CompareTag("Obstacle"))
         {
+            playerAudio.PlayOneShot(crashSound, 1f);
             explosionParticle.Play();
             dirtParticle.Stop();
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
