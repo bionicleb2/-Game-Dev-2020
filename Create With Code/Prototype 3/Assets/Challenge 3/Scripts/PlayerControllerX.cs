@@ -16,6 +16,7 @@ public class PlayerControllerX : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
+    public AudioClip boingSound;
     private bool isLowEnough = true;
     public float highEnough = 14;
 
@@ -39,17 +40,28 @@ public class PlayerControllerX : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && gameOver != true)
         {
             playerRb.AddForce(Vector3.up * floatForce);
-            if (transform.position.y > highEnough)
-            {
-                isLowEnough = false;
-                if (isLowEnough != true)
-                {
-                    transform.position = new Vector3(transform.position.x, highEnough, transform.position.z);
-                }
-            }
+            
             
             
         }
+        if (transform.position.y > highEnough)
+        {
+            playerRb.AddForce(Vector3.down * floatForce);
+            isLowEnough = false;
+            if (isLowEnough != true)
+            {
+                
+                transform.position = new Vector3(transform.position.x, highEnough, transform.position.z);
+            }
+        }
+        if (gameOver != false)
+        {
+            floatForce = 0;
+            playerRb.AddForce(Vector3.down * floatForce);
+        }
+            
+            
+        
     
     }
 
@@ -66,12 +78,18 @@ public class PlayerControllerX : MonoBehaviour
         } 
 
         // if player collides with money, fireworks
-        else if (other.gameObject.CompareTag("Money"))
+        if (other.gameObject.CompareTag("Money"))
         {
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
 
+        }
+
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            playerRb.AddForce(Vector3.up * floatForce * 20);
+            playerAudio.PlayOneShot(boingSound, 1.0f);
         }
 
     }
