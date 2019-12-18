@@ -21,6 +21,11 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Application.LoadLevel(0);
+        }
+
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
@@ -32,20 +37,35 @@ public class PlayerControl : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
+<<<<<<< HEAD
+=======
+            StartCoroutine(PowerupCountdownRoutine());
+>>>>>>> master
             powerupIndicator.gameObject.SetActive(true);
         }
     }
 
+<<<<<<< HEAD
     private void OnTriggerEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
+=======
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy") && hasPowerup)
+>>>>>>> master
         {
             Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
 
+<<<<<<< HEAD
             Debug.Log("Player collided with " + collision.gameObject + " with powerup set to " + hasPowerup);
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
             StartCoroutine(PowerupCountdownRoutine());
+=======
+            Debug.Log("Collided with: " + collision.gameObject.name + " with powerup set to " + hasPowerup);
+            enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+>>>>>>> master
         }
     }
 
